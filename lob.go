@@ -38,12 +38,13 @@ type Lob struct {
 // Base URL and API version for Lob.
 const (
 	BaseAPI    = "https://api.lob.com/v1/"
-	APIVersion = "2016-01-19"
+	APIVersion = "2016-06-30"
 )
 
 // MetricsSet is the bundle of metrics associated
 // with each Lob method.
 type MetricsSet struct {
+	VerifyAccount     *MetricsBundle
 	CreateCheck       *MetricsBundle
 	GetCheck          *MetricsBundle
 	ListChecks        *MetricsBundle
@@ -65,6 +66,7 @@ var Metrics *MetricsSet
 
 func init() {
 	Metrics = &MetricsSet{
+		VerifyAccount:     NewMetricsBundle("verify_account"),
 		CreateCheck:       NewMetricsBundle("check_create"),
 		GetCheck:          NewMetricsBundle("check_get"),
 		ListChecks:        NewMetricsBundle("check_list"),

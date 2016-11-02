@@ -14,6 +14,7 @@ type BankAccount struct {
 	Object        string            `json:"object"`
 	RoutingNumber string            `json:"routing_number"`
 	Signatory     string            `json:"signatory"`
+	Type          string            `json:"account_type"`
 	Verified      bool              `json:"verified"`
 }
 
@@ -23,6 +24,7 @@ type CreateBankAccountRequest struct {
 	Description   *string           `json:"description"`
 	RoutingNumber string            `json:"routing_number"`
 	AccountNumber string            `json:"account_number"`
+	Type          string            `json:"account_type"`
 	Signatory     string            `json:"signatory"`
 	Metadata      map[string]string `json:"metadata"`
 }
