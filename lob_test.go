@@ -25,7 +25,7 @@ func nullString(s string) *string {
 }
 
 func TestLobAPI(t *testing.T) {
-	lob := NewLob(BaseAPI, testAPIKey, testUserAgent)
+	lob := NewLob(testAPIKey)
 
 	verify, err := lob.VerifyAddress(testAddress)
 	if err != nil {

@@ -31,9 +31,8 @@ func logStackTrace(err error) {
 
 // Lob represents information on how to connect to the lob.com API.
 type Lob struct {
-	BaseAPI   string
-	APIKey    string
-	UserAgent string
+	BaseAPI string
+	APIKey  string
 }
 
 // Base URL and API version for Lob.
@@ -83,11 +82,10 @@ func init() {
 }
 
 // NewLob creates an object that can be used to connect to the lob.com API.
-func NewLob(baseAPI, apiKey, userAgent string) *Lob {
+func NewLob(apiKey string) *Lob {
 	return &Lob{
-		BaseAPI:   baseAPI,
-		APIKey:    apiKey,
-		UserAgent: userAgent,
+		BaseAPI: BaseAPI,
+		APIKey:  apiKey,
 	}
 }
 
@@ -166,7 +164,6 @@ func (lob *Lob) Get(endpoint string, params map[string]string, returnValue inter
 	req.SetBasicAuth(lob.APIKey, "")
 	req.Header.Add("Lob-Version", APIVersion)
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("User-Agent", lob.UserAgent)
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
@@ -219,7 +216,6 @@ func (lob *Lob) Post(endpoint string, params map[string]string, returnValue inte
 	req.SetBasicAuth(lob.APIKey, "")
 	req.Header.Add("Lob-Version", APIVersion)
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("User-Agent", lob.UserAgent)
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
@@ -258,7 +254,6 @@ func (lob *Lob) Delete(endpoint string, returnValue interface{}) error {
 	req.SetBasicAuth(lob.APIKey, "")
 	req.Header.Add("Lob-Version", APIVersion)
 	req.Header.Add("Accept", "application/json")
-	req.Header.Add("User-Agent", lob.UserAgent)
 
 	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
